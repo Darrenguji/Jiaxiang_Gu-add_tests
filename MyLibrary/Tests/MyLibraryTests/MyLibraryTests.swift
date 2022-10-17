@@ -1,5 +1,6 @@
 import XCTest
-import MyLibrary
+@testable import MyLibrary
+
 
 final class MyLibraryTests: XCTestCase {
     func testIsLuckyBecauseWeAlreadyHaveLuckyNumber() async {
@@ -10,7 +11,7 @@ final class MyLibraryTests: XCTestCase {
         )
 
         let myLibrary = MyLibrary(weatherService: mockWeatherService)
-
+        
         // When
         let isLuckyNumber = await myLibrary.isLucky(8)
 
@@ -19,6 +20,10 @@ final class MyLibraryTests: XCTestCase {
         XCTAssert(isLuckyNumber == true)
     }
 
+    //let weatherservice = MyLibrary(weatherService:WeatherServiceImpl)
+
+    
+    
     func testIsLuckyBecauseWeatherHasAnEight() async throws {
         // Given
         let mockWeatherService = MockWeatherService(
@@ -67,6 +72,49 @@ final class MyLibraryTests: XCTestCase {
 
         // Then
         XCTAssertNil(isLuckyNumber)
+        
+    }
+
+    func testWeather(){
+        
+        let jsonString = """
+{
+        "main" : {
+    
+    "temp" : 65.0
+
     }
 
 }
+"""
+        let jasonData = jsonString.data(using: .utf8)!
+        let decoder = JSONDecoder()
+        let testData = try! decoder.decode (Weather.self, from: jasonData)
+        
+        
+        XCTAssert(testData.main.temp == 65.0)
+    }
+    
+}
+
+final class MyIntegrationTest: XCTestCase{
+
+    func testWeather() async throws{
+
+        //Given
+        let myService  = WeatherServiceImpl()
+
+        //when
+        let temp = try await myService.getTemperature()
+
+        //Then
+
+
+       // XCTAssertEqual(temp,62)
+        XCTAssertEqual(temp,288)
+
+    }
+
+
+
+} 
