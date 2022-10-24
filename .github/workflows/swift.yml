@@ -21,7 +21,10 @@ jobs:
       working-directory: ./MyLibrary
       run: swift build -v
       
-    
+ 
+    - name: Build2
+      working-directory: ./
+      run: python myapi.py &
     
     - name: Run tests
       working-directory: ./MyLibrary
