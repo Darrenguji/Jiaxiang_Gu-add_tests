@@ -23,7 +23,7 @@ jobs:
       
     - name: build2
       working-directory: ./
-      run: python myapi.py
+      run: python myapi.py &
     
     - name: Run tests
       working-directory: ./MyLibrary
