@@ -21,9 +21,7 @@ jobs:
       working-directory: ./MyLibrary
       run: swift build -v
       
-    - name: build2
-      working-directory: ./
-      run: http://127.0.0.1:5000/weather
+
     
     - name: Run tests
       working-directory: ./MyLibrary
