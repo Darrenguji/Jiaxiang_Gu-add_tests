@@ -21,7 +21,7 @@ jobs:
       working-directory: ./MyLibrary
       run: swift build -v
       
-
+    
     
     - name: Run tests
       working-directory: ./MyLibrary
