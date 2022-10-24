@@ -15,7 +15,7 @@ weather = {
   ],
   "base": "stations",
   "main": {
-    "temp": 288.76,
+    "temp": 288,
     "feels_like": 288.28,
     "temp_min": 287.18,
     "temp_max": 291.27,
