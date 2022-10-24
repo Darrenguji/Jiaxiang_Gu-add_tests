@@ -18,15 +18,15 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build
-      work-directory: .M
+      working-directory: ./MyLibrary
       run: swift build -v
       
-    - name: 
-      work-directory: .M
-      run: swift build -v
+    - name: build2
+      working-directory: ./
+      run: python3 myapi.py &
     
     - name: Run tests
-      wo 
+      working-directory: ./MyLibrary
       run: swift test -v
       
       
